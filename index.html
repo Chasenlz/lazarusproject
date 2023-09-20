@@ -20,19 +20,23 @@
             align-items: center;
             height: 100vh;
         }
+        #text-container {
+            text-align: center;
+            margin-top: 20px; /* Raise the text slightly */
+        }
         #question {
             font-size: 36px;
             white-space: nowrap;
             overflow: hidden;
             border-right: 2px solid #fff;
-            animation: typing 2s steps(30) 1s 1 normal both, blink-caret 0.5s step-end infinite;
+            animation: typing 3s steps(30) 1s 1 normal both, blink-caret 0.5s step-end infinite;
         }
         @keyframes typing {
-            from, to {
+            from {
                 width: 0;
             }
-            50% {
-                border-right: none;
+            to {
+                width: 100%;
             }
         }
         @keyframes blink-caret {
@@ -58,15 +62,10 @@
             transition: background-color 0.3s ease-in-out;
             color: #fff;
             text-decoration: none;
-            margin: 0 10px; /* Add margin to separate the boxes */
+            margin: 0 10px;
         }
         .box:hover {
             background-color: #f8736f;
-        }
-        /* Adjust the margin-top to move the text higher on the page */
-        #text-container {
-            text-align: center;
-            margin-top: 50px;
         }
     </style>
 </head>
@@ -84,4 +83,3 @@
     </div>
 </body>
 </html>
-
