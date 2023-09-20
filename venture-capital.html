@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aelon Consulting</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        #container {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+        }
+        #image-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        #image-container img {
+            width: 200px; /* Adjust the width of the image as needed */
+        }
+        #text-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .box-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+        }
+        .box {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .box:hover {
+            background-color: #f8736f;
+        }
+        /* Add your custom CSS styles here for the matchmaking form */
+        .form-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .form-container textarea {
+            width: 80%;
+            padding: 10px;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            color: #000; /* Change text color to black for visibility */
+            background-color: #fff; /* Change background color to white for visibility */
+        }
+        .form-container button {
+            margin-top: 10px;
+            background-color: #fff;
+            color: #000; /* Change text color to black for visibility */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="image-container">
+            <img src="Aelon Consulting Logo.png" alt="Aelon Consulting Logo"> <!-- Replace 'your-image-url.jpg' with the actual image URL -->
+        </div>
+        <div id="text-container">
+            <h2>The Lazarus Project</h2>
+            <!-- Remove the question "Who are you?" -->
+        </div>
+        <div class="box-container">
+            <a href="venture-capital.html" class="box">Venture Capital</a>
+            <a href="private-equity.html" class="box">Private Equity</a>
+            <a href="individual-investor.html" class="box">Individual Investor</a>
+        </div>
+        
+        <!-- Add the startup-to-VC matchmaking form -->
+        <div class="form-container">
+            <p>Please provide information about your startup:</p>
+            <textarea id="team" name="team" rows="4" placeholder="Tell us about your team"></textarea><br>
+            <!-- Add more textarea fields for other startup information as needed -->
+
+            <button type="button" onclick="matchVC()">Find Matching VC</button>
+        </div>
+
+        <!-- Display the matching VC's information -->
+        <div id="matchResult" style="display: none;">
+            <h2>Matching VC:</h2>
+            <p id="vcName"></p>
+            <p id="vcDescription"></p>
+        </div>
+    </div>
+
+    <!-- JavaScript for the matchmaking logic -->
+    <script>
+        function matchVC() {
+            // Retrieve and process the startup information from the form
+            const team = document.getElementById('team').value;
+            // Retrieve and process other startup information as needed
+
+            // Perform matching logic (simplified for demonstration)
+            // In a real implementation, you would use a backend server for this process
+            // Here, we'll just display a hardcoded VC for demonstration purposes
+            const matchedVC = {
+                name: "Venture Capital Firm XYZ",
+                description: "We specialize in funding startups in the technology and healthcare sectors."
+            };
+
+            // Display the matching VC's information
+            document.getElementById('vcName').textContent = matchedVC.name;
+            document.getElementById('vcDescription').textContent = matchedVC.description;
+
+            // Show the match result section
+            document.getElementById('matchResult').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
