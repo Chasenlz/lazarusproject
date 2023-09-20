@@ -11,47 +11,68 @@
             background-color: #000;
             color: #fff;
             font-family: Arial, sans-serif;
+            overflow: hidden;
         }
         #container {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
             height: 100vh;
+            padding: 0 20px;
         }
         #question {
             font-size: 36px;
-            animation: typewriter 2s steps(40) 1s 1 normal both;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid #fff;
+            animation: typing 2s steps(30) 1s 1 normal both, blink-caret 0.5s step-end infinite;
         }
-        @keyframes typewriter {
-            from {
+        @keyframes typing {
+            from, to {
                 width: 0;
             }
-            to {
-                width: 100%;
+            50% {
+                border-right: none;
+            }
+        }
+        @keyframes blink-caret {
+            from, to {
+                border-color: transparent;
+            }
+            50% {
+                border-color: #fff;
             }
         }
         .box {
-            margin-top: 30px;
             display: inline-block;
             padding: 10px 20px;
             border: 2px solid #fff;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease-in-out;
+            color: #fff;
+            text-decoration: none;
         }
         .box:hover {
             background-color: #f8736f;
+        }
+        /* Adjust the margin-top to move the text higher on the page */
+        #text-container {
+            text-align: center;
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
     <div id="container">
-        <h1>Aelon Consulting</h1>
-        <h2>The Lazarus Project</h2>
-        <div id="question">Who are you?</div>
         <a href="investor.html" class="box">Investor</a>
         <a href="entrepreneur.html" class="box">Entrepreneur</a>
     </div>
+    <div id="text-container">
+        <h1>Aelon Consulting</h1>
+        <h2>The Lazarus Project</h2>
+        <div id="question">Who are you?</div>
+    </div>
 </body>
 </html>
+
