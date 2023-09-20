@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aelon Consulting</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        #question {
+            font-size: 36px;
+            animation: typewriter 2s steps(40) 1s 1 normal both;
+        }
+        @keyframes typewriter {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+        .box {
+            margin-top: 30px;
+            display: inline-block;
+            padding: 10px 20px;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .box:hover {
+            background-color: #f8736f;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Aelon Consulting</h1>
+        <h2>The Lazarus Project</h2>
+        <div id="question">Who are you?</div>
+        <a href="investor.html" class="box">Investor</a>
+        <a href="entrepreneur.html" class="box">Entrepreneur</a>
+    </div>
+</body>
+</html>
