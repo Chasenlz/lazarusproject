@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investor Startup Evaluation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        #container {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+        }
+        #image-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        #image-container img {
+            width: 200px; /* Adjust the width of the image as needed */
+        }
+        #text-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .box-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+        }
+        .box {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .box:hover {
+            background-color: #f8736f;
+        }
+        /* Custom CSS for the investor evaluation form */
+        .form-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .form-container textarea {
+            width: 80%;
+            padding: 10px;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            color: #fff;
+            background-color: #000;
+        }
+        .form-container button {
+            margin-top: 10px;
+            background-color: #fff;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="image-container">
+            <img src="Aelon Consulting Logo.png" alt="Aelon Consulting Logo"> <!-- Replace 'your-image-url.jpg' with the actual image URL -->
+        </div>
+        <div id="text-container">
+            <h2>Investor Startup Evaluation</h2>
+        </div>
+        
+        <!-- Investor evaluation form with questions and continue prompt -->
+        <div class="form-container">
+            <form id="investorForm">
+                <label for="team">Tell us about the startup team:</label><br>
+                <textarea id="team" name="team" rows="4" cols="50"></textarea><br>
+                <button type="button" onclick="showNextQuestion('marketOpportunity')">Continue</button>
+            </form>
+        </div>
+        
+        <!-- JavaScript for handling question transitions -->
+        <script>
+            function showNextQuestion(nextQuestionId) {
+                // Hide the current question
+                const currentQuestion = document.getElementById("investorForm");
+                currentQuestion.style.display = "none";
+                
+                // Show the next question
+                const nextQuestion = document.getElementById(nextQuestionId);
+                nextQuestion.style.display = "block";
+            }
+        </script>
+
+        <!-- Additional questions (hidden by default) -->
+        <div id="marketOpportunity" class="form-container" style="display: none;">
+            <form>
+                <label for="marketOpportunity">Describe the market opportunity:</label><br>
+                <textarea id="marketOpportunity" name="marketOpportunity" rows="4" cols="50"></textarea><br>
+                <button type="button" onclick="showNextQuestion('product')">Continue</button>
+            </form>
+        </div>
+
+        <div id="product" class="form-container" style="display: none;">
+            <form>
+                <label for="product">Briefly describe the product or service:</label><br>
+                <textarea id="product" name="product" rows="4" cols="50"></textarea><br>
+                <button type="button" onclick="showNextQuestion('traction')">Continue</button>
+            </form>
+        </div>
+
+<div id="traction" class="form-container" style="display: none;">
+    <form>
+        <label for="traction">Share your traction metrics (if any):</label><br>
+        <textarea id="traction" name="traction" rows="4" cols="50"></textarea><br>
+        <button type="button" onclick="showNextQuestion('businessModel')">Continue</button>
+    </form>
+</div>
+
+<div id="businessModel" class="form-container" style="display: none;">
+    <form>
+        <label for="businessModel">Explain your business model:</label><br>
+        <textarea id="businessModel" name="businessModel" rows="4" cols="50"></textarea><br>
+        <button type="button" onclick="showNextQuestion('marketStrategy')">Continue</button>
+    </form>
+</div>
+
+<div id="marketStrategy" class="form-container" style="display: none;">
+    <form>
+        <label for="marketStrategy">Detail your market strategy:</label><br>
+        <textarea id="marketStrategy" name="marketStrategy" rows="4" cols="50"></textarea><br>
+        <button type="button" onclick="showNextQuestion('competition')">Continue</button>
+    </form>
+</div>
+
+<div id="competition" class="form-container" style="display: none;">
+    <form>
+        <label for="competition">Who are your main competitors?</label><br>
+        <textarea id="competition" name="competition" rows="4" cols="50"></textarea><br>
+        <button type="button" onclick="showNextQuestion('financialProjections')">Continue</button>
+    </form>
+</div>
+
+<div id="financialProjections" class="form-container" style="display: none;">
+    <form>
+        <label for="financialProjections">Provide financial projections:</label><br>
+        <textarea id="financialProjections" name="financialProjections" rows="4" cols="50"></textarea><br>
+        <button type="button" onclick="showNextQuestion('exitStrategy')">Continue</button>
+    </form>
+</div>
+
+<div id="exitStrategy" class="form-container" style="display: none;">
+    <form>
+        <label for="exitStrategy">Explain your exit strategy:</label><br>
+        <textarea id="exitStrategy" name="exitStrategy" rows="4" cols="50"></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+      
+    </div>
+</body>
+</html>
