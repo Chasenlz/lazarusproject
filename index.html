@@ -16,13 +16,20 @@
         #container {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             height: 100vh;
         }
+        #image-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        #image-container img {
+            width: 200px; /* Adjust the width of the image as needed */
+        }
         #text-container {
             text-align: center;
-            margin-top: 5px; 
+            margin-top: 10px;
         }
         #question {
             font-size: 36px;
@@ -71,8 +78,10 @@
 </head>
 <body>
     <div id="container">
+        <div id="image-container">
+            <img src="your-image-url.jpg" alt="Aelon Consulting Logo"> <!-- Replace 'your-image-url.jpg' with the actual image URL -->
+        </div>
         <div id="text-container">
-            <h1>Aelon Consulting</h1>
             <h2>The Lazarus Project</h2>
             <div id="question">Who are you?</div>
         </div>
