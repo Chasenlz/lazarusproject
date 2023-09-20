@@ -30,7 +30,7 @@
         #text-container {
             text-align: center;
             margin-top: 10px;
-         }
+        }
         #question {
             font-size: 36px;
             white-space: nowrap;
@@ -108,24 +108,60 @@
             <h2>Tell Us About You</h2>
         </div>
         
-        <!-- Investor evaluation form with questions and continue prompt -->
+        <!-- Investor evaluation form with questions and continue/back buttons -->
         <div class="form-container">
             <form id="investorForm">
                 <label for="team">Tell us about the startup team:</label><br>
                 <textarea id="team" name="team" rows="4" cols="50"></textarea><br>
-                <button type="button" onclick="showNextQuestion('marketOpportunity')">Continue</button>
+                <button type="button" onclick="showNextQuestion('marketOpportunity')">Next</button>
             </form>
         </div>
         
         <!-- JavaScript for handling question transitions -->
         <script>
-            function showNextQuestion(nextQuestionId) {
-                // Hide the current question
-                const currentQuestion = document.getElementById("investorForm");
+            const questions = [
+                "team",
+                "marketOpportunity",
+                "product",
+                "traction",
+                "businessModel",
+                "marketStrategy",
+                "competition",
+                "financialProjections",
+                "exitStrategy"
+            ];
+
+            let currentQuestionIndex = 0;
+
+            function showNextQuestion() {
+                showQuestion(currentQuestionIndex + 1);
+            }
+
+            function showPreviousQuestion() {
+                showQuestion(currentQuestionIndex - 1);
+            }
+
+            function showQuestion(index) {
+                const currentQuestion = document.getElementById(questions[currentQuestionIndex]);
                 currentQuestion.style.display = "none";
-                
-                // Show the next question
-                const nextQuestion = document.getElementById(nextQuestionId);
+
+                currentQuestionIndex = index;
+
+                if (currentQuestionIndex === 0) {
+                    document.getElementById("backButton").style.display = "none";
+                } else {
+                    document.getElementById("backButton").style.display = "inline-block";
+                }
+
+                if (currentQuestionIndex === questions.length - 1) {
+                    document.getElementById("nextButton").style.display = "none";
+                    document.getElementById("submitButton").style.display = "inline-block";
+                } else {
+                    document.getElementById("nextButton").style.display = "inline-block";
+                    document.getElementById("submitButton").style.display = "none";
+                }
+
+                const nextQuestion = document.getElementById(questions[currentQuestionIndex]);
                 nextQuestion.style.display = "block";
             }
         </script>
@@ -135,7 +171,7 @@
             <form>
                 <label for="marketOpportunity">Describe the market opportunity:</label><br>
                 <textarea id="marketOpportunity" name="marketOpportunity" rows="4" cols="50"></textarea><br>
-                <button type="button" onclick="showNextQuestion('product')">Continue</button>
+                <button type="button" onclick="showNextQuestion()">Next</button>
             </form>
         </div>
 
@@ -143,58 +179,59 @@
             <form>
                 <label for="product">Briefly describe the product or service:</label><br>
                 <textarea id="product" name="product" rows="4" cols="50"></textarea><br>
-                <button type="button" onclick="showNextQuestion('traction')">Continue</button>
+                <button type="button" onclick="showNextQuestion()">Next</button>
             </form>
         </div>
 
-<div id="traction" class="form-container" style="display: none;">
-    <form>
-        <label for="traction">Share your traction metrics (if any):</label><br>
-        <textarea id="traction" name="traction" rows="4" cols="50"></textarea><br>
-        <button type="button" onclick="showNextQuestion('businessModel')">Continue</button>
-    </form>
-</div>
+        <div id="traction" class="form-container" style="display: none;">
+            <form>
+                <label for="traction">Share your traction metrics (if any):</label><br>
+                <textarea id="traction" name="traction" rows="4" cols="50"></textarea><br>
+                <button type="button" onclick="showNextQuestion()">Next</button>
+            </form>
+        </div>
 
-<div id="businessModel" class="form-container" style="display: none;">
-    <form>
-        <label for="businessModel">Explain your business model:</label><br>
-        <textarea id="businessModel" name="businessModel" rows="4" cols="50"></textarea><br>
-        <button type="button" onclick="showNextQuestion('marketStrategy')">Continue</button>
-    </form>
-</div>
+        <div id="businessModel" class="form-container" style="display: none;">
+            <form>
+                <label for="businessModel">Explain your business model:</label><br>
+                <textarea id="businessModel" name="businessModel" rows="4" cols="50"></textarea><br>
+                <button type="button" onclick="showNextQuestion()">Next</button>
+            </form>
+        </div>
 
-<div id="marketStrategy" class="form-container" style="display: none;">
-    <form>
-        <label for="marketStrategy">Detail your market strategy:</label><br>
-        <textarea id="marketStrategy" name="marketStrategy" rows="4" cols="50"></textarea><br>
-        <button type="button" onclick="showNextQuestion('competition')">Continue</button>
-    </form>
-</div>
+        <div id="marketStrategy" class="form-container" style="display: none;">
+            <form>
+                <label for="marketStrategy">Detail your market strategy:</label><br>
+                <textarea id="marketStrategy" name="marketStrategy" rows="4" cols="50"></textarea><br>
+                <button type="button" onclick="showNextQuestion()">Next</button>
+            </form>
+        </div>
 
-<div id="competition" class="form-container" style="display: none;">
-    <form>
-        <label for="competition">Who are your main competitors?</label><br>
-        <textarea id="competition" name="competition" rows="4" cols="50"></textarea><br>
-        <button type="button" onclick="showNextQuestion('financialProjections')">Continue</button>
-    </form>
-</div>
+        <div id="competition" class="form-container" style="display: none;">
+            <form>
+                <label for="competition">Who are your main competitors?</label><br>
+                <textarea id="competition" name="competition" rows="4" cols="50"></textarea><br>
+                <button type="button" onclick="showNextQuestion()">Next</button>
+            </form>
+        </div>
 
-<div id="financialProjections" class="form-container" style="display: none;">
-    <form>
-        <label for="financialProjections">Provide financial projections:</label><br>
-        <textarea id="financialProjections" name="financialProjections" rows="4" cols="50"></textarea><br>
-        <button type="button" onclick="showNextQuestion('exitStrategy')">Continue</button>
-    </form>
-</div>
+        <div id="financialProjections" class="form-container" style="display: none;">
+            <form>
+                <label for="financialProjections">Provide financial projections:</label><br>
+                <textarea id="financialProjections" name="financialProjections" rows="4" cols="50"></textarea><br>
+                <button type="button" onclick="showNextQuestion()">Next</button>
+            </form>
+        </div>
 
-<div id="exitStrategy" class="form-container" style="display: none;">
-    <form>
-        <label for="exitStrategy">Explain your exit strategy:</label><br>
-        <textarea id="exitStrategy" name="exitStrategy" rows="4" cols="50"></textarea><br>
-        <button type="submit">Submit</button>
-    </form>
-</div>
-      
+        <div id="exitStrategy" class="form-container" style="display: none;">
+            <form>
+                <label for="exitStrategy">Explain your exit strategy:</label><br>
+                <textarea id="exitStrategy" name="exitStrategy" rows="4" cols="50"></textarea><br>
+                <button id="nextButton" type="button" onclick="showNextQuestion()">Next</button>
+                <button id="backButton" type="button" onclick="showPreviousQuestion()" style="display: none;">Back</button>
+                <button id="submitButton" type="submit" style="display: none;">Submit</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>
