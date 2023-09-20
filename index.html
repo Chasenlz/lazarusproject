@@ -15,10 +15,10 @@
         }
         #container {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
             height: 100vh;
-            padding: 0 20px;
         }
         #question {
             font-size: 36px;
@@ -43,6 +43,12 @@
                 border-color: #fff;
             }
         }
+        .box-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+        }
         .box {
             display: inline-block;
             padding: 10px 20px;
@@ -52,6 +58,7 @@
             transition: background-color 0.3s ease-in-out;
             color: #fff;
             text-decoration: none;
+            margin: 0 10px; /* Add margin to separate the boxes */
         }
         .box:hover {
             background-color: #f8736f;
@@ -65,13 +72,15 @@
 </head>
 <body>
     <div id="container">
-        <a href="investor.html" class="box">Investor</a>
-        <a href="entrepreneur.html" class="box">Entrepreneur</a>
-    </div>
-    <div id="text-container">
-        <h1>Aelon Consulting</h1>
-        <h2>The Lazarus Project</h2>
-        <div id="question">Who are you?</div>
+        <div id="text-container">
+            <h1>Aelon Consulting</h1>
+            <h2>The Lazarus Project</h2>
+            <div id="question">Who are you?</div>
+        </div>
+        <div class="box-container">
+            <a href="investor.html" class="box">Investor</a>
+            <a href="entrepreneur.html" class="box">Entrepreneur</a>
+        </div>
     </div>
 </body>
 </html>
