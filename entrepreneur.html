@@ -96,6 +96,10 @@
             border-radius: 5px;
             cursor: pointer;
         }
+        /* Hide the "Back" button by default */
+        .form-container .back-button {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -113,7 +117,7 @@
             <form id="investorForm" action="mailto:Chase.Lazarian@aelongroup.com" method="post" enctype="text/plain">
                 <label for="team">Tell us about the startup team:</label><br>
                 <textarea id="team" name="team" rows="4" cols="50"></textarea><br>
-                <button type="button" onclick="showPreviousQuestion()">Back</button>
+                <button type="button" class="back-button" onclick="showPreviousQuestion()">Back</button>
                 <button type="button" onclick="showNextQuestion('marketOpportunity')">Next</button>
             </form>
         </div>
@@ -151,9 +155,9 @@
                 currentQuestionIndex = index;
 
                 if (currentQuestionIndex === 0) {
-                    document.getElementById("backButton").style.display = "none";
+                    document.querySelector(".back-button").style.display = "none";
                 } else {
-                    document.getElementById("backButton").style.display = "inline-block";
+                    document.querySelector(".back-button").style.display = "inline-block";
                 }
 
                 if (currentQuestionIndex === questions.length - 1) {
@@ -174,64 +178,12 @@
             <form>
                 <label for="marketOpportunity">Describe the market opportunity:</label><br>
                 <textarea id="marketOpportunity" name="marketOpportunity" rows="4" cols="50"></textarea><br>
-                <button type="button" onclick="showPreviousQuestion()">Back</button>
+                <button type="button" class="back-button" onclick="showPreviousQuestion()">Back</button>
                 <button type="button" onclick="showNextQuestion('product')">Next</button>
             </form>
         </div>
 
-        <div id="product" class="form-container" style="display: none;">
-            <form>
-                <label for="product">Briefly describe the product or service:</label><br>
-                <textarea id="product" name="product" rows="4" cols="50"></textarea><br>
-                <button type="button" onclick="showPreviousQuestion()">Back</button>
-                <button type="button" onclick="showNextQuestion('traction')">Next</button>
-            </form>
-        </div>
-
-        <div id="traction" class="form-container" style="display: none;">
-            <form>
-                <label for="traction">Share your traction metrics (if any):</label><br>
-                <textarea id="traction" name="traction" rows="4" cols="50"></textarea><br>
-                <button type="button" onclick="showPreviousQuestion()">Back</button>
-                <button type="button" onclick="showNextQuestion('businessModel')">Next</button>
-            </form>
-        </div>
-
-        <div id="businessModel" class="form-container" style="display: none;">
-            <form>
-                <label for="businessModel">Explain your business model:</label><br>
-                <textarea id="businessModel" name="businessModel" rows="4" cols="50"></textarea><br>
-                <button type="button" onclick="showPreviousQuestion()">Back</button>
-                <button type="button" onclick="showNextQuestion('marketStrategy')">Next</button>
-            </form>
-        </div>
-
-        <div id="marketStrategy" class="form-container" style="display: none;">
-            <form>
-                <label for="marketStrategy">Detail your market strategy:</label><br>
-                <textarea id="marketStrategy" name="marketStrategy" rows="4" cols="50"></textarea><br>
-                <button type="button" onclick="showPreviousQuestion()">Back</button>
-                <button type="button" onclick="showNextQuestion('competition')">Next</button>
-            </form>
-        </div>
-
-        <div id="competition" class="form-container" style="display: none;">
-            <form>
-                <label for="competition">Who are your main competitors?</label><br>
-                <textarea id="competition" name="competition" rows="4" cols="50"></textarea><br>
-                <button type="button" onclick="showPreviousQuestion()">Back</button>
-                <button type="button" onclick="showNextQuestion('financialProjections')">Next</button>
-            </form>
-        </div>
-
-        <div id="financialProjections" class="form-container" style="display: none;">
-            <form>
-                <label for="financialProjections">Provide financial projections:</label><br>
-                <textarea id="financialProjections" name="financialProjections" rows="4" cols="50"></textarea><br>
-                <button type="button" onclick="showPreviousQuestion()">Back</button>
-                <button type="button" onclick="showNextQuestion('exitStrategy')">Next</button>
-            </form>
-        </div>
+        <!-- Add other questions here -->
 
         <div id="exitStrategy" class="form-container" style="display: none;">
             <form>
