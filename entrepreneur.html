@@ -100,6 +100,21 @@
         .form-container .back-button {
             display: none;
         }
+        /* Bottom navigation buttons */
+        .bottom-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .bottom-buttons button {
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        /* Error message for blank fields */
+        .error-message {
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -117,12 +132,13 @@
             <form id="investorForm" action="mailto:Chase.Lazarian@aelongroup.com" method="post" enctype="text/plain">
                 <label for="team">Tell us about the startup team:</label><br>
                 <textarea id="team" name="team" rows="4" cols="50"></textarea><br>
+                <div class="error-message" id="teamError"></div>
                 <button type="button" class="back-button" onclick="showPreviousQuestion()">Back</button>
                 <button type="button" onclick="showNextQuestion('marketOpportunity')">Next</button>
             </form>
         </div>
         
-        <!-- JavaScript for handling question transitions -->
+        <!-- JavaScript for handling question transitions and validation -->
         <script>
             const questions = [
                 "team",
@@ -139,7 +155,38 @@
             let currentQuestionIndex = 0;
 
             function showNextQuestion(nextQuestionId) {
-                showQuestion(currentQuestionIndex + 1, nextQuestionId);
+                const currentQuestion = document.getElementById(questions[currentQuestionIndex]);
+                const currentTextarea = currentQuestion.querySelector("textarea");
+                const errorMessage = document.getElementById(`${questions[currentQuestionIndex]}Error`);
+
+                // Check if the textarea is blank
+                if (currentTextarea.value.trim() === "") {
+                    errorMessage.textContent = "Blank, must complete form";
+                    return;
+                } else {
+                    errorMessage.textContent = ""; // Clear any previous error message
+                }
+
+                currentQuestion.style.display = "none";
+
+                currentQuestionIndex++;
+
+                if (currentQuestionIndex === 0) {
+                    document.querySelector(".back-button").style.display = "none";
+                } else {
+                    document.querySelector(".back-button").style.display = "inline-block";
+                }
+
+                if (currentQuestionIndex === questions.length - 1) {
+                    document.getElementById("nextButton").style.display = "none";
+                    document.getElementById("submitButton").style.display = "inline-block";
+                } else {
+                    document.getElementById("nextButton").style.display = "inline-block";
+                    document.getElementById("submitButton").style.display = "none";
+                }
+
+                const nextQuestion = document.getElementById(nextQuestionId || questions[currentQuestionIndex]);
+                nextQuestion.style.display = "block";
             }
 
             function showPreviousQuestion() {
@@ -151,7 +198,6 @@
             function showQuestion(index, nextQuestionId = null) {
                 const currentQuestion = document.getElementById(questions[currentQuestionIndex]);
                 currentQuestion.style.display = "none";
-
                 currentQuestionIndex = index;
 
                 if (currentQuestionIndex === 0) {
@@ -178,6 +224,7 @@
             <form>
                 <label for="marketOpportunity">Describe the market opportunity:</label><br>
                 <textarea id="marketOpportunity" name="marketOpportunity" rows="4" cols="50"></textarea><br>
+                <div class="error-message" id="marketOpportunityError"></div>
                 <button type="button" class="back-button" onclick="showPreviousQuestion()">Back</button>
                 <button type="button" onclick="showNextQuestion('product')">Next</button>
             </form>
@@ -189,9 +236,12 @@
             <form>
                 <label for="exitStrategy">Explain your exit strategy:</label><br>
                 <textarea id="exitStrategy" name="exitStrategy" rows="4" cols="50"></textarea><br>
-                <button id="nextButton" type="button" onclick="showNextQuestion()">Next</button>
-                <button id="backButton" type="button" onclick="showPreviousQuestion()">Back</button>
-                <input id="submitButton" type="submit" value="Submit" style="display: none;">
+                <div class="error-message" id="exitStrategyError"></div>
+                <div class="bottom-buttons">
+                    <button type="button" class="back-button" onclick="showPreviousQuestion()">Back</button>
+                    <button id="nextButton" type="button" onclick="showNextQuestion()">Next</button>
+                    <button id="submitButton" type="submit">Submit</button>
+                </div>
             </form>
         </div>
     </div>
