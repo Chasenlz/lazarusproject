@@ -3,70 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aelon Consulting</title>
+    <title>Productivity Tracker</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
         body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #000;
-            color: #fff;
-            font-family: Arial, sans-serif;
-            overflow: hidden;
         }
-        #container {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            height: 100vh;
-        }
-        #image-container {
+        h1 {
             text-align: center;
-            margin-top: 20px;
-        }
-        #image-container img {
-            width: 200px; /* Adjust the width of the image as needed */
-        }
-        #text-container {
-            text-align: center;
-            margin-top: 10px;
-        }
-        .box-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
             margin-top: 30px;
         }
-        .box {
-            display: inline-block;
-            padding: 10px 20px;
-            border: 2px solid #fff;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease-in-out;
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
+        #productivity-graph {
+            width: 80%;
+            margin: 0 auto;
         }
-        .box:hover {
-            background-color: #f8736f;
+        .progress-bar {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .progress-bar-inner {
+            height: 20px;
+            background-color: #f8b855; /* Updated color */
+            border-radius: 5px;
+            text-align: center;
+            line-height: 20px;
+            color: white;
         }
     </style>
 </head>
 <body>
-    <div id="container">
-        <div id="image-container">
-            <img src="Aelon Consulting Logo.png" alt="Aelon Consulting Logo"> <!-- Replace 'your-image-url.jpg' with the actual image URL -->
-        </div>
-        <div id="text-container">
-            <h2>The Lazarus Project</h2>
-            <!-- Remove the question "Who are you?" -->
-        </div>
-        <div class="box-container">
-            <a href="venture-capital.html" class="box">Venture Capital</a>
-            <a href="private-equity.html" class="box">Private Equity</a>
-            <a href="individual-investor.html" class="box">Individual Investor</a>
-        </div>
+    <h1>Productivity Tracker</h1>
+
+    <!-- Graph for productivity -->
+    <div id="productivity-graph"></div>
+
+    <!-- Progress bars -->
+    <div class="progress-bar">
+        <div class="progress-bar-inner" id="daily-progress">0%</div>
     </div>
+    <div class="progress-bar">
+        <div class="progress-bar-inner" id="weekly-progress">0%</div>
+    </div>
+    <div class="progress-bar">
+        <div class="progress-bar-inner" id="monthly-progress">0%</div>
+    </div>
+    <div class="progress-bar">
+        <div class="progress-bar-inner" id="quarterly-progress">0%</div>
+    </div>
+
+    <script>
+        // Sample data for productivity graph
+        var productivityData = {
+            dates: ['2024-02-01', '2024-02-02', '2024-02-03', '2024-02-04', '2024-02-05'],
+            tasksCompleted: [5, 7, 6, 8, 9] // Sample number of tasks completed for each day
+        };
+
+        // Code to plot productivity graph
+        var graphDiv = document.getElementById('productivity-graph');
+
+        var trace1 = {
+            x: productivityData.dates,
+            y: productivityData.tasksCompleted,
+            type: 'scatter',
+            mode: 'lines+markers',
+            marker: {color: 'blue'},
+        };
+
+        var layout = {
+            title: 'Productivity over Time',
+            xaxis: {
+                title: 'Date'
+            },
+            yaxis: {
+                title: 'Tasks Completed'
+            }
+        };
+
+        Plotly.newPlot(graphDiv, [trace1], layout);
+
+        // Sample code for updating progress bars (replace with actual data)
+        // Calculate progress percentage based on actual data
+        var dailyProgress = 60;
+        var weeklyProgress = 40;
+        var monthlyProgress = 75;
+        var quarterlyProgress = 90;
+
+        document.getElementById('daily-progress').innerText = dailyProgress + '%';
+        document.getElementById('weekly-progress').innerText = weeklyProgress + '%';
+        document.getElementById('monthly-progress').innerText = monthlyProgress + '%';
+        document.getElementById('quarterly-progress').innerText = quarterlyProgress + '%';
+    </script>
 </body>
 </html>
